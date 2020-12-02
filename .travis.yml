@@ -27,3 +27,4 @@ deploy:
     repo: Lauviah0622/backend-deploy-test
     branch: main
   skip_cleanup: 'true'
+  region: ap-northeast-1
