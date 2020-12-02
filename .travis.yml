@@ -1,4 +1,10 @@
-language: ruby
+language: node_js
+node_js:
+    - "10"
+install:
+    - npm install
+script:
+    - npm run test
 before_deploy:
   - zip -r latest *
   - mkdir dpl_cd_upload
