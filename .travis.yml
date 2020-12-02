@@ -5,17 +5,24 @@ install:
     - npm install
 script:
     - npm run test
+    - npm run build
+sudo: false
+dist: trusty
+
 before_deploy:
   - zip -r latest *
   - mkdir dpl_cd_upload
   - mv latest.zip dpl_cd_upload/latest.zip
+branches:
+  only:
+  - main
 deploy:
   provider: s3
-  access_key_id: AKIAYB6YCLYJEJXDIRMQ
+  access_key_id: AKIAYB6YCLYJMOTOJXHX
   secret_access_key:
-    secure: CjeOPTl080CVSpmy089ei4dD8RMO7aSoPUlUbK7971afJX9k/AuLcJxsXaPpY0LE3nebxmeLXR85R2C7uGs2z/ZbzRrU+q9YgkVxkSUnuKSIsOVHex5bz3r+3Mci0/aHCMRk6ejEHjoOFYSxsXSEugbyixNdD8UtCU5gqQI5r8JbqcsByu6Ifd5m1cn/QcGEvamITvslOLPgILjNmxgfmDykJmuirwMZKkv+ptNknglXX455Kl9but/pW2+qBog6GGHZ/PdMgBzy8dZRokpGoJ0NdbkhmIRTs1iznbNiN2rpky9J4FUhzKe2GHEErdMJtq8z1UEyF+xbp7niENivSmvMKssOAfPrGTYa8cTDH7WLDWWa36YZRp/qGad0mOTrTop53tzHw/FcBdkXT6oEqluwGiesuvSbIY27esaSWL5xTDWN0o+mBsqMjg9aBHQj9AVoVXyt7SHguWP+wmzYlxuXZjwbeZvNM1DiGLDB1ruh2Ph11xAn7YEhEKoxnXgUQTwzQqst+z5MS6WoONg0nSIfUjb7F7vyqDZQKQrOyGC9Au7Zf57YI1wrzOFRE2veM1Pkkpzz3OFWndLkABrFyQSA+p787jULzsnQ/Y6dsz6eST+Cf+m64RD7xmrr+VzvDWgAU4oIq3CXpRN4xFxJzcFTMIJYQOnvX/ofjXlHTlg=
-  bucket: ZJdOUO9sN3WZBV3K7IKYBV8ElJq9CffIhelabuw8
-  local-dir: dpl_cd_upload
+    secure: l7FZ5yCMk5N2wUkLFY6ew95F0BZeI5UspIfTGRifYrxSp+zcWwwMHz5PwRgrY+QycEvPcqbjoA8riG+Sg8UOTJtWiSlXBR0EZBwYCSMFvnfxCJYBQBlDGlWko2G+yc8EGcoOcR6efHBqbSSlxwcQRcJTq3vTaHefwyOMQdBDEiIYv3wqGXRiM1B9gqgH9eQ0/niYg+TA1Wagjo4qvs5Lwcx69F83jZqzSda1x1e9he3qe8szJ3sdC/leEoz25n8zBrk8Ccjc8T/GkfTFoUlYtv32XwgGXdaL2kAEMa1pzJ3/e0qkilmhlKhHxVX1cXePXxkCVZIvEgo2Arv5QVW9tmCkKVskbRVfRceh+hE5wNEEbIEjVX4z4K3kdtroTUxl5BLhrnLdSPzAfKDqAAgBqSx7RmGBf4t2xF367oPKikkMalcoU4PTnjXoLmJMzWhLRWUxQnENiTEGUirdnEagF3NhhtxQwlG/WcE5fm5yl0xmiV2HYceWtbF+nDZc6lTVb5EMrb46JmZl6Z/a2d05yZMhwZIrnlDp4tHWMDnM46+buTV1eyA5Dm+l3kJlhLV/zMoprXHdkRQs3NWraPhRRrb4dPrzS6CFdb8ozlSV45eMAcCl8XJ9bdKnqFFBvlNeGiCa0JkgKMXzdgb2ZbpUmGSqy47xo7j+biDQagQgd7k=
+  bucket: travis-deploy-bucket
+  local-dir: dist
   acl: private
   on:
     repo: Lauviah0622/backend-deploy-test
