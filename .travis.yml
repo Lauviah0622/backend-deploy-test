@@ -1,26 +1,11 @@
-language: ruby
-before_deploy:
-  - zip -r latest *
-  - test -d dpl_cd_upload || mkdir dpl_cd_upload
-  - mv latest.zip dpl_cd_upload/latest.zip
-deploy:
-  - provider: s3
-    access_key_id: AKIAI7TSPFIJ4XKYYBRQ
+  deploy:
+    provider: s3
+    access_key_id: AKIAIA2J7HXUI52NHMHA
     secret_access_key:
-      secure: "eoc801hNb8XHQI0SqqXuOopZXF2wrnhcf9RflV4k+8yNPAkDF8oYuFAqLqrvFZrnsOydohr1QXEEFSLT4jSiJlcEUv//Yxe3FmU5H+PxQnSjHRWn+aLxtWAlt6p+IHM+y/N5ZLxsMsQvoJ72eyE18fZsJD1n9DG3B5PIrDAveP1U1AaGowHPTBqZ9zDeZmchx28fIyUcHBjjz5iUJZzZKSgxyk6enUV0906JEUPmD/eofLnS2zymILUJz5MeUszlrU3PliLFeQSEPUzpqkZ34ZssCjcE0CzWlCXsX8vboc5vnNc5RnlOwOk9EM+CYqxyaHioKXUGJUYgAmmMUbHdKIKkdkhaAZ2DJIg5Sbqn3Jk5Z"
-    local_dir: dpl_cd_upload
+      secure: JPDcEKISOrS4YK31WC...太長了(省略)
+    bucket: bright-travis-deploy
+    local-dir: dist
+    acl: private
     skip_cleanup: true
     on:
-      branch: master
-    bucket: "travis-codedeploy"
-  - provider: codedeploy
-    access_key_id: AKIAI7TSPFIJ4XKYYBRQ
-    secret_access_key:
-      secure: "eoc801hNb8XHQI0SqqXuOopZXF2wrnhcf9RflV4k+8yNPAkDF8oYuFAqLqrvFZrnsOydohr1QXEEFSLT4jSiJlcEUv//Yxe3FmU5H+PxQnSjHRWn+aLxtWAlt6p+IHM+y/N5ZLxsMsQvoJ72eyE18fZsJD1n9DG3B5PIrDAveP1U1AaGowHPTBqZ9zDeZmchx28fIyUcHBjjz5iUJZzZKSgxyk6enUV0906JEUPmD/eofLnS2zymILUJz5MeUszlrU3PliLFeQSEPUzpqkZ34ZssCjcE0CzWlCXsX8vboc5vnNc5RnlOwOk9EM+CYqxyaHioKXUGJUYgAmmMUbHdKIKkdkhaAZ2DJIg5Sbqn3Jk5Z"
-    bucket: "travis-codedeploy"
-    key: latest.zip
-    application: travis-codedeploy-master
-    deployment_group: master
-    region: ap-northeast-1
-    on:
-      branch: master
+      repo: Lauviah0622/backend-deploy-test
