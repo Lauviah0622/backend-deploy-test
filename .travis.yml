@@ -1,26 +1,26 @@
-language: node_js
+language: ruby
 before_deploy:
   - zip -r latest *
   - test -d dpl_cd_upload || mkdir dpl_cd_upload
   - mv latest.zip dpl_cd_upload/latest.zip
 deploy:
   - provider: s3
-    access_key_id: AKIAYB6YCLYJEJXDIRMQ
+    access_key_id: AKIAI7TSPFIJ4XKYYBRQ
     secret_access_key:
-      secure: "aBjER5fEbQezo7xdRdAjrGLmK0n3j92brH6sf7iH2ax6BNGohhfbsElNAMGhi+DemBAA8bGZmKkcDFrMZtFRQwo9CnbUw8G69u2eg7NNgJW7UDCtFz5De6QcsbcnJXXuR7Q1rZ0sFF5P2BXj/9148A7TZqcWrI9Ruy43DNi4roiVrrQc9juqqtaeAqrMlDKsjrulMsRdwlBisg6F+Ph74dc2dbxonSCjWCSQYZfiM9kOqqv+1GNMyT1hZ8AVPw01LRTCGOR+EzPVQ47vQ8dyFGM2xsg3OXquONxlddepm8c34xJ5Zsx2mmVGq4qsMsTIdw0Hb5AMsosWrBRYgVc3A+3e8D5XZ39XRAdaVL9IjmoecSGjFz2Dhavr5a+q+oQRwo2VIxTArChcYzIEbUaDjXr4r2ToCEkTY3DGqDIgxYCXhDjsckoP01oy4KzncCGTFRT4NXCtDacnVleEJF4aCp77mHhF1trpeOjOjGkCWwiAXfBZMEvwNDl+TJjdNMFVriNZDz5EBPzdSAcZ2f9BcRHu/mTIs6Wuk7QHAQXOlluM77+OW4kPQohcgglmHtS4yk6eIrzWKzW8NNIRZIKQyh0BJdTeUlQ1PzRTK/fpNWrYOlf/zGCaWos21hr5hT/iVPJa+++zn46Tj4+nNSeuGzAbIzKRn+0MYD4ZxqhZs3w="
+      secure: "eoc801hNb8XHQI0SqqXuOopZXF2wrnhcf9RflV4k+8yNPAkDF8oYuFAqLqrvFZrnsOydohr1QXEEFSLT4jSiJlcEUv//Yxe3FmU5H+PxQnSjHRWn+aLxtWAlt6p+IHM+y/N5ZLxsMsQvoJ72eyE18fZsJD1n9DG3B5PIrDAveP1U1AaGowHPTBqZ9zDeZmchx28fIyUcHBjjz5iUJZzZKSgxyk6enUV0906JEUPmD/eofLnS2zymILUJz5MeUszlrU3PliLFeQSEPUzpqkZ34ZssCjcE0CzWlCXsX8vboc5vnNc5RnlOwOk9EM+CYqxyaHioKXUGJUYgAmmMUbHdKIKkdkhaAZ2DJIg5Sbqn3Jk5Z"
     local_dir: dpl_cd_upload
     skip_cleanup: true
     on:
       branch: master
-    bucket: "travis-deploy-bucket"
+    bucket: "travis-codedeploy"
   - provider: codedeploy
-    access_key_id: AKIAYB6YCLYJEJXDIRMQ
+    access_key_id: AKIAI7TSPFIJ4XKYYBRQ
     secret_access_key:
-      secure: "aBjER5fEbQezo7xdRdAjrGLmK0n3j92brH6sf7iH2ax6BNGohhfbsElNAMGhi+DemBAA8bGZmKkcDFrMZtFRQwo9CnbUw8G69u2eg7NNgJW7UDCtFz5De6QcsbcnJXXuR7Q1rZ0sFF5P2BXj/9148A7TZqcWrI9Ruy43DNi4roiVrrQc9juqqtaeAqrMlDKsjrulMsRdwlBisg6F+Ph74dc2dbxonSCjWCSQYZfiM9kOqqv+1GNMyT1hZ8AVPw01LRTCGOR+EzPVQ47vQ8dyFGM2xsg3OXquONxlddepm8c34xJ5Zsx2mmVGq4qsMsTIdw0Hb5AMsosWrBRYgVc3A+3e8D5XZ39XRAdaVL9IjmoecSGjFz2Dhavr5a+q+oQRwo2VIxTArChcYzIEbUaDjXr4r2ToCEkTY3DGqDIgxYCXhDjsckoP01oy4KzncCGTFRT4NXCtDacnVleEJF4aCp77mHhF1trpeOjOjGkCWwiAXfBZMEvwNDl+TJjdNMFVriNZDz5EBPzdSAcZ2f9BcRHu/mTIs6Wuk7QHAQXOlluM77+OW4kPQohcgglmHtS4yk6eIrzWKzW8NNIRZIKQyh0BJdTeUlQ1PzRTK/fpNWrYOlf/zGCaWos21hr5hT/iVPJa+++zn46Tj4+nNSeuGzAbIzKRn+0MYD4ZxqhZs3w="
-    bucket: "travis-deploy-bucket"
+      secure: "eoc801hNb8XHQI0SqqXuOopZXF2wrnhcf9RflV4k+8yNPAkDF8oYuFAqLqrvFZrnsOydohr1QXEEFSLT4jSiJlcEUv//Yxe3FmU5H+PxQnSjHRWn+aLxtWAlt6p+IHM+y/N5ZLxsMsQvoJ72eyE18fZsJD1n9DG3B5PIrDAveP1U1AaGowHPTBqZ9zDeZmchx28fIyUcHBjjz5iUJZzZKSgxyk6enUV0906JEUPmD/eofLnS2zymILUJz5MeUszlrU3PliLFeQSEPUzpqkZ34ZssCjcE0CzWlCXsX8vboc5vnNc5RnlOwOk9EM+CYqxyaHioKXUGJUYgAmmMUbHdKIKkdkhaAZ2DJIg5Sbqn3Jk5Z"
+    bucket: "travis-codedeploy"
     key: latest.zip
     application: travis-codedeploy-master
-    deployment_group: travis-cd-ec2
+    deployment_group: master
     region: ap-northeast-1
     on:
       branch: master
