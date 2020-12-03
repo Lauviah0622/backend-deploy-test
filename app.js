@@ -10,6 +10,8 @@ app.get('/', function(req, res) {
     res.send('test gogogogo')
 })
 
+console.log(123);
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 })
