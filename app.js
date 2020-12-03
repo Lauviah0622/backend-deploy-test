@@ -6,12 +6,13 @@ const port = process.env.PORT || 5001;
 
 // router.get('', pageController.commentsPage);
 
-app.get('/', function(req, res) {
+app.get('/', function test(req, res) {
     res.send('test gogogogo')
 })
 
 
 app.listen(port, () => {
+    
     console.log(`Example app listening at http://localhost:${port}`);
 })
 
