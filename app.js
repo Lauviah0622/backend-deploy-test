@@ -4,7 +4,6 @@ const  app = express();
 const port = process.env.PORT || 5001;
 
 
-// router.get('', pageController.commentsPage);
 
 app.get('/', function test(req, res) {
     res.send('test gogogogo')
