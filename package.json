@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node app.js",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "deploy": "NODE_ENV=production npm install && npm run start"
   },
   "dependencies": {
     "dayjs": "^1.9.6",
